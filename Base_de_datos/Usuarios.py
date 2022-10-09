@@ -144,7 +144,12 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
     
-    def CambiarContraseña(self, autor, antigua_contraseña, nueva_contraseña):
+    def CambiarContraseña(self, autor, antigua_contraseña: str, nueva_contraseña: str):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
         inicial_u = ""
         for letra in autor.usuario:
             if len(inicial_u) != 3:
