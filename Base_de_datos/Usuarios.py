@@ -48,6 +48,14 @@ class Usuario:
         return mensaje
     
     def AñadirSalario(self, autor,  nuevo_salario: int):
+        """Añade un valor entero en el argumento salario del objeto Usuario
+        
+        Args:
+            autor (Usuario): Objeto con el argumento rol asignado como ADMINISTRADOR
+            nuevo_salario (int): Valor que se va a asignar al argumento salario
+        Returns:
+            int: Remuneración mensual que se le da al Usuario por sus servicios
+        """
         inicial_u = ""
         for letra in autor.usuario:
             if len(inicial_u) != 3:
@@ -60,7 +68,16 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
     
-    def AumentarSalario(self, autor, dinero_adicional):
+    def AumentarSalario(self, autor, dinero_adicional: int):
+        """Modifica el argumento salario del objeto Usuario, sumandole un valor entero
+
+        Args:
+            autor (Usuario): Objeto con el argumento rol asignado como ADMINISTRADOR
+            dinero_adicional (int): Valor entero a sumar en el argumento salario del Usuario
+
+        Returns:
+            int: Remuneración mensual modificada que se le da al Usuario por sus servicios
+        """
         inicial_u = ""
         for letra in autor.usuario:
             if len(inicial_u) != 3:
@@ -73,7 +90,16 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
         
-    def DisminuirSalario(self, autor, dinero_descontable):
+    def DisminuirSalario(self, autor, dinero_descontable: int):
+        """Modifica el argumento salario del objeto Usuario, restandole un valor entero
+
+        Args:
+            autor (Usuario): Objeto con el argumento rol asignado como ADMINISTRADOR
+            dinero_descontable (int): Valor entero a se resta en el argumento salario del Usuario 
+
+        Returns:
+            int: Remuneración mensual modificada que se le da al Usuario por sus servicios
+        """
         inicial_u = ""
         for letra in autor.usuario:
             if len(inicial_u) != 3:
@@ -86,7 +112,16 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
     
-    def Promover(self, autor, nuevo_rol):
+    def Promover(self, autor, nuevo_rol: str):
+        """Subir o generar una promoción al rol del usuario, sin degradar el antes mencionado
+
+        Args:
+            autor (Usuario): Objeto con el argumento rol asignado como ADMINISTRADOR
+            nuevo_rol (str): Str el cual remplaza el rol del argumento rol del objeto Usuario
+
+        Returns:
+            str: rol o papel que el usuario cumple en la organización
+        """
         inicial_u = ""
         for letra in autor.usuario:
             if len(inicial_u) != 3:
