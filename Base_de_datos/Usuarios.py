@@ -47,7 +47,7 @@ class Usuario:
         mensaje = f"    {self.rol}\nNombre: {self.nombre} - {self.id}\nUsuario: {self.usuario}\nSalario = {salario}"
         return mensaje
     
-    def AñadirSalario(self, autor,  nuevo_salario: int):
+    def AñadirSalario(self, autor:object,  nuevo_salario: int):
         """Añade un valor entero en el argumento salario del objeto Usuario
         
         Args:
@@ -68,7 +68,7 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
     
-    def AumentarSalario(self, autor, dinero_adicional: int):
+    def AumentarSalario(self, autor: object, dinero_adicional: int):
         """Modifica el argumento salario del objeto Usuario, sumandole un valor entero
 
         Args:
@@ -90,7 +90,7 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
         
-    def DisminuirSalario(self, autor, dinero_descontable: int):
+    def DisminuirSalario(self, autor: object, dinero_descontable: int):
         """Modifica el argumento salario del objeto Usuario, restandole un valor entero
 
         Args:
@@ -112,7 +112,7 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
     
-    def Promover(self, autor, nuevo_rol: str):
+    def Promover(self, autor: object, nuevo_rol: str):
         """Subir o generar una promoción al rol del usuario, sin degradar el antes mencionado
 
         Args:
@@ -144,11 +144,14 @@ class Usuario:
         else:
             return "No cuenta con los permisos para hacer esto"
     
-    def CambiarContraseña(self, autor, antigua_contraseña: str, nueva_contraseña: str):
-        """_summary_
+    def CambiarContraseña(self, autor: object):
+        """Cambia el valor confidencial cotraseñade un Usuario, verifica la contraseña nueva antes de actualizar el valor de este
+    
+        Args:
+            autor (Usuario): Objeto con el argumento rol asignado "ADMINISTRADOR" o el mismo Usuario sobre el cual se ejerce el metodo            
 
         Returns:
-            _type_: _description_
+            Str : argumento contraseña del objeto Usuario con un nuevo valor
         """
         inicial_u = ""
         for letra in autor.usuario:
@@ -157,7 +160,7 @@ class Usuario:
             else:
                 pass
         
-        if autor.id[0] == "A" and inicial_u == "adm":
+        if (autor.id[0] == "A" and inicial_u == "adm")  or (self.nombre == autor.nombre):
             c_antigua = input("Ingrese su antigua contraseña: ")
             
             if c_antigua == self.contraseña:
