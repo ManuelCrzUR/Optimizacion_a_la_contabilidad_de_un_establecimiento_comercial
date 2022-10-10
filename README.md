@@ -1,7 +1,7 @@
 # OPTIMIZACIÓN A LA CONTABILIDAD DE UN ESTABLECIMIENTO COMERCIAL
 
 ### Descripción del Proyecto:
-Este es el proyecto final para el curso de programación del curso *"Programación de Computadore"* de la Universidad del Rosario, realizado por estudiantes de primer semetre del cohorte 2022-2, pertenecientes al pregrado **MACC**
+Este es el proyecto final para el curso de programación del curso *"Programación de Computadores"* de la Universidad del Rosario, realizado por estudiantes de primer semetre del cohorte 2022-2, pertenecientes al pregrado **MACC**
 
 **Proyecto elegido: Sistema de contabilización y administración de un establecimiento comercial**
 
