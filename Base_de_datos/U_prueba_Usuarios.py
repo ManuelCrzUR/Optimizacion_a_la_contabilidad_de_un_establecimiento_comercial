@@ -19,10 +19,7 @@ usr_prueba = Usuario("prueba", "ADMINISTRADOR", "adm_001", "1", "A000")
 usr_prueba2 = Usuario("prueba2", "CAJERO", "caj_001", "1", "C000")
   
 def test_suite_init(): 
-    test(type(usr_prueba) == Usuario)
-
-def test_suite_str():
-    test(type(usr_prueba.__str__) == str)    
+    test(type(usr_prueba) == Usuario)    
     
 def test_suite_AñadirSalario():
     usr_prueba.AñadirSalario(usr_prueba, 10000)
@@ -48,7 +45,6 @@ def test_suite_CambiarContraseña():
 
 if __name__ == "__main__":    
     test_suite_init()
-    test_suite_str()
     test_suite_AñadirSalario()
     test_suite_AumentarSalario()
     test_suite_DisminuirSalario()

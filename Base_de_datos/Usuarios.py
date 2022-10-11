@@ -25,7 +25,7 @@ class Usuario:
         id (str): [id]
         salario (int)"""
         
-    def __init__(self, Nombre: str, rol: str, Usuario: str, Contraseña: str, id: str, salario: int):
+    def __init__(self, Nombre: str, rol: str, Usuario: str, Contraseña: str, id: str, salario: int = 0):
         """Inicializa en objeto de tipo Usuario
 
         Args:
@@ -179,8 +179,8 @@ class Usuario:
             c_antigua = input("Ingrese su antigua contraseña: ")
             
             if c_antigua == self.contraseña:
-                c_nueva = input("Ingrese su nueva contraseña")
-                c_verifiacion =  input("Verifique la nueva contraseña")
+                c_nueva = input("Ingrese su nueva contraseña: ")
+                c_verifiacion =  input("Verifique la nueva contraseña: ")
                 
                 if c_nueva == c_verifiacion:
                     self.contraseña = c_nueva
