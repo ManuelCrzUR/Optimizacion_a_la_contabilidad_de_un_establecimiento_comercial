@@ -7,4 +7,3 @@ Será el archivo que enlace todos los documentos, módulos y clases, por este mo
 #Se importan los modulos de las subcarpetas correspondientes
 from Base_de_datos import Usuarios 
 from Base_de_datos import Base_de_datosUsr 
-
