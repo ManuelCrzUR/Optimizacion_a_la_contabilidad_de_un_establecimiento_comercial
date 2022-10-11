@@ -1,4 +1,18 @@
-"Módulo Usuarios"
+"""Módulo Usuarios
+
+    Este módulo se encarga de crear objetos con la clase usuarios y ejecutar algunos metodos a estos mismos.
+    
+    Los metodos que estan en la clase Usuario son:
+        __init__
+        __str__
+        AñadirSalario
+        AumentarSalario
+        DisminuirSalario
+        Promover
+        CambiarContraseña
+        
+    Si desea comprobar su funcionamiento, puede visitar el módulo U_prueba_Usuarios
+"""
 
 class Usuario:
     """Representa un Usuario
@@ -44,7 +58,7 @@ class Usuario:
         else:
             salario = self.salario
         
-        mensaje = f"    {self.rol}\nNombre: {self.nombre} - {self.id}\nUsuario: {self.usuario}\nSalario = {salario}"
+        mensaje = f"    {self.rol}\nNombre: {self.nombre} - {self.id}\nUsuario: {self.usuario}\nSalario: {salario}"
         return mensaje
     
     def AñadirSalario(self, autor:object,  nuevo_salario: int):
@@ -178,4 +192,3 @@ class Usuario:
             return "Usted no cuenta con los permisos requeridos para esta acción"
     
 adm1 = Usuario("manuel", "ADMINISTRADOR", "adm_manuel", "Manu.santy2004", "A001" )
-print(adm1)
