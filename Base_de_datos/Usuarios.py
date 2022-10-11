@@ -36,9 +36,9 @@ class Usuario:
             id (str): Identificador en al organización, da acceso a ciertas funciones.
             salario (int, opcional): Valor de remuneracion mensual. Por defecto None
         """
-        self.rol = rol
+        self.rol = rol.upper()
         self.nombre = Nombre
-        self.salario = None
+        self.salario = salario
         self.id = id
         self.usuario = Usuario
         self.contraseña = Contraseña
