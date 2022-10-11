@@ -45,11 +45,12 @@ def test_suite_CambiarContraseña():
     test(usr_prueba.contraseña == "1")
     usr_prueba.CambiarContraseña(usr_prueba)
     test(usr_prueba.contraseña == "0")
-    
-test_suite_init()
-test_suite_str()
-test_suite_AñadirSalario()
-test_suite_AumentarSalario()
-test_suite_DisminuirSalario()
-test_suite_Promover()
-test_suite_CambiarContraseña()
+
+if __name__ == "__main__":    
+    test_suite_init()
+    test_suite_str()
+    test_suite_AñadirSalario()
+    test_suite_AumentarSalario()
+    test_suite_DisminuirSalario()
+    test_suite_Promover()
+    test_suite_CambiarContraseña()
