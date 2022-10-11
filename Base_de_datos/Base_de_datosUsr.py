@@ -1,4 +1,3 @@
-from Usuarios import *
 import sqlite3
 
 def CrearBase():
