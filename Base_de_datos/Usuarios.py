@@ -45,6 +45,7 @@ class Usuario:
             
         if self.rol != None:
             self.rol.upper()
+            
    
     def __str__(self) -> str:
         """Resume el objeto tipo usuario con los datos no confidenciales
