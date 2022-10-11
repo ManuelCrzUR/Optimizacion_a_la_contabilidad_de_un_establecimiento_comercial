@@ -25,7 +25,7 @@ class Usuario:
         id (str): [id]
         salario (int)"""
         
-    def __init__(self, Nombre: str, rol: str, Usuario: str, Contraseña: str, id: str, salario: int = None):
+    def __init__(self, Nombre: str, rol: str, Usuario: str, Contraseña: str, id: str, salario: int):
         """Inicializa en objeto de tipo Usuario
 
         Args:
@@ -191,4 +191,3 @@ class Usuario:
         else:
             return "Usted no cuenta con los permisos requeridos para esta acción"
     
-adm1 = Usuario("manuel", "ADMINISTRADOR", "adm_manuel", "Manu.santy2004", "A001" )
