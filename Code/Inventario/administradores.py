@@ -12,7 +12,7 @@ class Usuarios_Ad:
         print(Administradores)
         comprobacion_Adm  = input("Ingrese el Usuario Autorizado")
 
-
+#HOLIS, ESTO ES DE PRUEBA
 
 Usuario_supremo = Usuarios_Ad("Usuario-Principal", 123456789)
 
