@@ -1,4 +1,3 @@
-from Usuarios import *
 import sqlite3
 
 def CrearBase():
@@ -30,7 +29,7 @@ def InsertarUsuario(usr):
     conn.commit()
     conn.close()
     
-def InsertarUsuarios(usr_lista):
+def InsertarVariosUsuarios(usr_lista):
     conn = sqlite3.connect('Miembros.db')
     cursor = conn.cursor()
     añadir = f"INSERT INTO usuarios VALUES (?, ?, ?, ?, ?, ?)"
