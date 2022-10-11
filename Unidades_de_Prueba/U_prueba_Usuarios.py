@@ -9,3 +9,4 @@ def test(pasa):
         msn = "test en linea {0} FALLO".format(linea_num)
     print(msn)
      
+    mensaje = "Daniel es el amor de mi vida"
