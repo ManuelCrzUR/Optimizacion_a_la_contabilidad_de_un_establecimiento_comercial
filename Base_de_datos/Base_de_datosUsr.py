@@ -6,10 +6,10 @@ def CrearBase():
     conn.commit()
     conn.close()
     
-def CrarTabla():
+def CrearTabla():
     conn = sqlite3.connect('Miembros.db')
     cursor = conn.cursor()
-    cursor.execut(
+    cursor.execute(
         """CREATE TABLE IF NOT EXISTS usuarios (
             rol TEXT,
             nombre TEXT,
@@ -51,10 +51,19 @@ def LeerBase():
 def LeerBaseOrdenada(campo):
     conn = sqlite3.connect('Miembros.db')
     cursor = conn.cursor()
-    leer_ordenado = f"SELECT * FROM usuarios ORDERED BY {campo}"
+    leer_ordenado = f"SELECT * FROM usuarios ORDER BY {campo}"
     cursor.execute(leer_ordenado)
     datos = cursor.fetchall()
     conn.commit()
     conn.close()
     return datos
-    
+
+def Filtrar(argumento, filtro):
+    conn = sqlite3.connect('Miembros.db')
+    cursor = conn.cursor()
+    instruccion = f"SELECT * FROM usuarios WHERE {argumento} == '{filtro}'"
+    cursor.execute(instruccion)
+    datos = cursor.fetchall()
+    conn.commit()
+    conn.close()
+    return datos
