@@ -1,3 +1,4 @@
+from Usuarios import *
 import sqlite3
 
 def CrearBase():
@@ -68,3 +69,6 @@ def Filtrar(argumento, filtro):
     conn.close()
     return datos
 
+f1 = Filtrar("usuario", "adm_000")
+f1 = f1[0]
+print(f1[0])

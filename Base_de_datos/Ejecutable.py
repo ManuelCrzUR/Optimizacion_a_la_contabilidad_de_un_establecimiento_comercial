@@ -6,14 +6,56 @@ Será el archivo que enlace todos los documentos, módulos y clases, por este mo
 
 #Se importan los modulos de las subcarpetas correspondientes
 
-import Usuarios
-import U_prueba_Usuarios
-# from Usuarios import CambiarContraseña 
-import Base_de_datosUsr
+from Usuarios import *
+from Base_de_datosUsr import *
 
 #Bienvenida al usuario y preguntamos primero si es alguien registrado, para mayor privacidad del establecimiento.
-print("Hola! Bienvenid@ a nuestro programa. \n El objetivo es optimizar manejo de contabilidad una empresa que maneje inventario y flujo de caja.")
-user_validation = input("Es usted un usuario registrado? \n [S/N]:")
+def InicioBienvenida():
+    print("Hola! Bienvenid@ a nuestro programa. \n El objetivo es optimizar manejo de contabilidad una empresa que maneje inventario y flujo de caja.")
+    user_validation = input("Es usted un usuario registrado? \n [S/N]:")
+    
+    if user_validation.upper() == "S":
+        Validacion()
+    else:
+        print("Lo siento, No cuentas con los permisos para acceder")
+        InicioBienvenida()
+
+def Validacion():
+       
+    credenciales = [] 
+    user_identificacion = input("Por favor, digite su usario: \n")
+    user_password = input("Digite su contraseña: \n")
+    credenciales = [user_identificacion, user_password]
+        
+    verificador_base = Filtrar("usuario", f"{user_identificacion}")
+    
+    if len(verificador_base) == 0:
+        if verificador_base[5] == user_password:
+            print(f"Bienvenido {verificador_base[1]}")
+            id_usuario = verificador_base[3]
+            VerificacionRol(id_usuario)
+        else:
+            print("La contraseña ingresada no coincide")
+            Validacion()
+    else:
+        print("No se encuentran usuarios en común")
+        Validacion()
+
+def VerificacionRol(id):
+    inicial_id = ""
+    for id in range(1):
+        inicial_id += 1
+    
+    # if 
+    
+    
+    #     if 
+        
+    #     if credenciales == ["ADMINISTRADOR", '1234']:
+    #         es_administrador = credenciales 
+    #         return administrador(credenciales)
+    #     elif credenciales == ["CAJERO",'1234']:
+    #         return cajero(credenciales)
 
 def administrador (credenciales):
     if credenciales == ["ADMINISTRADOR", '1234']: #Esto se puede hacer dentro de una funcion llamada administrador
@@ -93,31 +135,7 @@ def supervisor(credenciales):
     else: 
         return "Contacte a su administrador para que le pueda crear su usuario" 
 
-
-def validacion(user_validation):
-    '''
-        Usuarios existentes:
-        Administrador que puede usar cualquier modulo del programa.
-        Supervisor: tiene opciones de caja y parcialmente de administrador.
-        Cajero: Tiene opciones netamente operativas
-        Invitado: Solo puede visualizar datos superficiales.
-
-    '''
-    if user_validation.upper() == "S": #La respuesta del usuario se globaliza a mayúsculas por practicidad.
-        credenciales = "" #Se genera una tupla vacía que contendrá el ingreso de la información confidencial.
-        user_identificacion = input("Por favor, digite su usario: \n")
-        user_password = input("Digite su contraseña: \n")
-        credenciales = [user_identificacion, user_password]
-        #print (credenciales) para verificar que esté tomando los datos
-        if credenciales == ["ADMINISTRADOR", '1234']:
-            es_administrador = credenciales 
-            return administrador(credenciales)
-        elif credenciales == ["CAJERO",'1234']:
-            return cajero(credenciales)
-            
-
-
 #Se llama a la funcion para validar su funcionamiento
-validacion(user_validation)
+InicioBienvenida()
 
 
