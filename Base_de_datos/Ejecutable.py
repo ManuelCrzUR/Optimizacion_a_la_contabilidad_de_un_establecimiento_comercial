@@ -65,7 +65,6 @@ def CrearUsuario():
     elif conf.upper() == "N":
         CrearUsuario()
     
-    
         
     
 #Bienvenida al usuario y preguntamos primero si es alguien registrado, para mayor privacidad del establecimiento.
