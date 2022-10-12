@@ -28,15 +28,42 @@ Este es el proyecto final para el curso de programación del curso *"Programaci�
 7. [Licencia](#licencia)
 
 ### Información General
+## ¿De qué se encarga nuestro progama?
+
+El programa dirigido a empresas con más de un usuario, tiene como objetivo la seguridad de la información contenida. Por ende, el funcionamiento del programa depende exclusivamente de los usuarios ya registrados. Que dependiendo del rol, pueden agregar miembros, eliminar objetos de la base de datos y acceder a un programa cajero. se puede acceder únicamente si el usuario registrado, que debe ser administrador, crea el siguiente usuario que tendrá diferentes opciones de uso dependiendo de su rol. 
+
+El programa dirigido a empresas con más de un usuario, primero confirma que quien use el programa sea un usuario regisrado, posteriormente, dependiendo de los roles que el administrador le haya asignado, el programa, después de validar la identidad del operador, este puede acceder al menú de opciones propio de cada rol. 
+
+El ID de los usuarios es asignado de manera aleatoria, para evitar conflictos de duplicados y aumentar la seguridad del programa en manera básica. Toda la información es almacenada en bases de datos sencillas, que se comunican con la parte lógica y con la que interactúa el usuario.
+
+Existen los siguientes roles:
+
+    Administrador: Es el máximo rol, tiene todas las opciones disponibles de supervisor, cajero e invitado. Además, es el único que puede crear usuarios en el programa.
+    
+    Supervisor: El supervisor se encarga de visualizar o editar el inventario actual. Puede imprimir facturas o usar el modo cajero.
+    
+    Cajero: Este rol se encarga del modo cajero (facturar a clientes, imprir la factura actual) y visualizar el inventario que se encuentre actualmente en la base de datos.
+    
+    Invitado: Se necesitan credenciales (Usuario y contraseña) para únicamente visualiar el inventario de la empresa.
 
 ### Tecnologias Usadas
 
+- Git 
+- Github
+- Python (3.10)
+- pip
+- Kivy (GUI basado en Python)
+
 ### Instalar y Correr el Proyecto
 
-### Como Usar el Proyecto
+Se debe tener Python 3 instalado en el computador y ejecutar el archivo llamado Ejecutable.py
 
-### FAQS
+
+### Como Usar el Proyecto
+Para acceder al programa desde el comienzo, existe el usuario "ADMINISTRADOR" con la contraseña 1234, a partir de ahí se tiene acceso a los demás menús. Posteriormente, con el teclado numérico se pueden acceder a las demás opciones del programa.
+
 
 ### Creditos
 
 ### Licencia
+MIT license
