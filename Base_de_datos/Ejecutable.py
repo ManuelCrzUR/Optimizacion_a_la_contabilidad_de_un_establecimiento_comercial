@@ -15,30 +15,6 @@ import Base_de_datosUsr
 print("Hola! Bienvenid@ a nuestro programa. \n El objetivo es optimizar manejo de contabilidad una empresa que maneje inventario y flujo de caja.")
 user_validation = input("Es usted un usuario registrado? \n [S/N]:")
 
-'''
-    Dentro de la función validación, la idea es que el programa identifique qué tipo de usuario está intentando ingresar al programa.
-    Las credenciales son cotejadas con la base de datos. 
-    En caso de ser un usuario registrado se le proporcionarán diferentes opciones. El usuario Administrador contiene todas las opciones disponibles en el programa.
-    En caso ser personal no autorizado, se le pedirá al usuario que contacte un administrador para que le cree una cuenta y poder usar el programa.
-
-'''
-
-def validacion(user_validation):
-    '''
-        Usuarios existentes:
-        Administrador que puede usar cualquier modulo del programa.
-        Supervisor: tiene opciones de caja y parcialmente de administrador.
-        Cajero: Tiene opciones netamente operativas
-        Invitado: Solo puede visualizar datos superficiales.
-
-    '''
-    if user_validation.upper() == "S": #La respuesta del usuario se globaliza a mayúsculas por practicidad.
-        credenciales = "" #Se genera una tupla vacía que contendrá el ingreso de la información confidencial.
-        user_identificacion = input("Por favor, digite su usario: \n")
-        user_password = input("Digite su contraseña: \n")
-        credenciales = [user_identificacion, user_password]
-        #print (credenciales) para verificar que esté tomando los datos
-
 def administrador (credenciales):
     if credenciales == ["ADMINISTRADOR", '1234']: #Esto se puede hacer dentro de una funcion llamada administrador
         eleccion = int(input("El menu de acciones es el siguiente: \n 1: Crear Usuario. \n 2: Remover usuario.\n 3: Ver o editar inventario \n 4: Imprimir facturas \n 5: Mostar modo cajero \n 6: Menu cajero \n"))
@@ -134,13 +110,11 @@ def validacion(user_validation):
         credenciales = [user_identificacion, user_password]
         #print (credenciales) para verificar que esté tomando los datos
         if credenciales == ["ADMINISTRADOR", '1234']:
-        #     es_administrador = credenciales 
+            es_administrador = credenciales 
             return administrador(credenciales)
         elif credenciales == ["CAJERO",'1234']:
             return cajero(credenciales)
             
-
-
 
 
 #Se llama a la funcion para validar su funcionamiento
