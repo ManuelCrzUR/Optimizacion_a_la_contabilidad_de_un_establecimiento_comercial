@@ -40,7 +40,7 @@ def validacion(user_validation):
         credenciales = [user_identificacion, user_password]
         #print (credenciales) para verificar que esté tomando los datos
 
-        if credenciales == ["ADMINISTRADOR", '1234']: #Esto se puede hacer dentro de una funcion llamada administrador
+        if credenciales == ["ADMINISTRADOR", '1234']: #Esto se puede hacer dentro de una funcion llamada administrador  wjwjwjwjwjjwjwjwjwjw
             eleccion = int(input("El menu de acciones es el siguiente: \n 1: Crear Usuario. \n 2: Remover usuario.\n 3: Ver o editar inventario \n 4: Imprimir facturas \n 5: Mostar modo cajero \n 6: Menu cajero"))
             #esto se puede optimizar con un ciclo for. De momento es funcional.
             if eleccion == 1:

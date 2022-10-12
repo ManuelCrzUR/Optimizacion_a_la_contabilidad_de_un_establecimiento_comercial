@@ -28,14 +28,6 @@ def InsertarUsuario(usr):
     cursor.execute(añadir)
     conn.commit()
     conn.close()
-    
-def InsertarVariosUsuarios(usr_lista):
-    conn = sqlite3.connect('Miembros.db')
-    cursor = conn.cursor()
-    añadir = f"INSERT INTO usuarios VALUES (?, ?, ?, ?, ?, ?)"
-    cursor.executemany(añadir, usr_lista)
-    conn.commit()
-    conn.close()
 
 def LeerBase():
     conn = sqlite3.connect('Miembros.db')
@@ -46,6 +38,15 @@ def LeerBase():
     conn.commit()
     conn.close()
     return datos
+
+def OrdenarBase(campo):
+    conn = sqlite3.connect('Miembros.db')
+    cursor = conn.cursor()
+    leer_ordenado = f"SELECT * FROM usuarios ORDER BY {campo}"
+    cursor.execute(leer_ordenado)
+    datos = cursor.fetchall()
+    conn.commit()
+    conn.close()
     
 def LeerBaseOrdenada(campo):
     conn = sqlite3.connect('Miembros.db')
@@ -66,3 +67,4 @@ def Filtrar(argumento, filtro):
     conn.commit()
     conn.close()
     return datos
+
