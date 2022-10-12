@@ -64,10 +64,23 @@ def CrearUsuario():
         print("Usuario agregado con exito")
     elif conf.upper() == "N":
         CrearUsuario()
+
+def EliminarUsr():
+    usuario_el = input("Ingrese el usuario que desea eliminar?\n > ")
+    confirmacion = input(f"Esta seguro que desea eliminar el usuario {usuario_el}? [S/N]\n> ")
     
-    
+    if confirmacion == "S":
+        print("si confirma")
+        EliminarUsuario("usuario", usuario_el)
+    elif confirmacion == "N":
+        EliminarUsr()
+    else:
+        print("No se entendio el valor ingresado")
         
     
+    
+    
+            
 #Bienvenida al usuario y preguntamos primero si es alguien registrado, para mayor privacidad del establecimiento.
 def InicioBienvenida():
     print("Hola! Bienvenid@ a nuestro programa. \n El objetivo es optimizar manejo de contabilidad una empresa que maneje inventario y flujo de caja.")
@@ -116,13 +129,13 @@ def administrador ():
     eleccion = int(input("El menu de acciones es el siguiente: \n 1: Crear Usuario. \n 2: Remover usuario.\n 3: Ver o editar inventario \n 4: Imprimir facturas \n 5: Mostar modo cajero \n 6: Menu cajero \n"))
             
     if eleccion == 1:
-            agregar = print("Aqui puede crear nuevos usarios en a la organizacion.")
+            print("Aqui puede crear nuevos usarios en a la organizacion.")
             CrearUsuario() #Se comunica con el archivo Usuarios para que pueda usar el método crear usuarios implementado en dicha clase.
-            return True
+
     elif eleccion == 2:
-            quitar = print("Que usuario desea remover?") ##Se comunica con el archivo Usuarios para que pueda usar el método crear usuarios implementado en dicha clase.
-            Usuarios.pop(quitar) #Al ser una lista, se implementa de la manera .pop() para remover un usuario.
-            return True
+            print("Aqui puede remover usuario de la base de datos") ##Se comunica con el archivo Usuarios para que pueda usar el método crear usuarios implementado en dicha clase.
+            EliminarUsr() #Al ser una lista, se implementa de la manera .pop() para remover un usuario.
+            
     elif eleccion == 3:
             sub_opcion = int(input("Presione 1 si desea unicamente ver el inventario. \n Presione 2 si desea editar el inventario actual."))
             if sub_opcion == 1:

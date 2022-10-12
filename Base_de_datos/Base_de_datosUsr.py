@@ -69,6 +69,11 @@ def Filtrar(argumento, filtro):
     conn.close()
     return datos
 
-f1 = Filtrar("usuario", "adm_000")
-f1 = f1[0]
-print(f1[0])
+def EliminarUsuario(argumento, condicion):
+    conn = sqlite3.connect('Miembros.db')
+    cursor = conn.cursor()
+    instr = f"DELETE FROM usuarios WHERE {argumento} == '{condicion}'"
+    cursor.execute(instr)
+    conn.commit()
+    conn.close()
+    
