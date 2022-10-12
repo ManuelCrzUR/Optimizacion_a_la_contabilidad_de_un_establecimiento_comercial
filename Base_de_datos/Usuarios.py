@@ -25,7 +25,9 @@ class Usuario:
         id (str): [id]
         salario (int)"""
         
-    def __init__(self, Nombre: str, rol: str, Usuario: str, Contraseña: str, id: str, salario: int = 0):
+    roles = ["ADMINISTRADOR", "SUPERVISOR", "CAJERO", "INVITADO"]
+        
+    def __init__(self, Nombre: str, rol: str, contraseña: str, Usuario: str = None, id: str = None, salario: int = 0):
         """Inicializa en objeto de tipo Usuario
 
         Args:
@@ -41,7 +43,7 @@ class Usuario:
         self.salario = salario
         self.id = id
         self.usuario = Usuario
-        self.contraseña = Contraseña
+        self.contraseña = contraseña
             
         if self.rol != None:
             self.rol.upper()
@@ -61,6 +63,7 @@ class Usuario:
         
         mensaje = f"    {self.rol}\nNombre: {self.nombre} - {self.id}\nUsuario: {self.usuario}\nSalario: {salario}"
         return mensaje
+    
     
     def AñadirSalario(self, autor:object,  nuevo_salario: int):
         """Añade un valor entero en el argumento salario del objeto Usuario
