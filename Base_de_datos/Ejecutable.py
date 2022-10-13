@@ -9,14 +9,15 @@ Será el archivo que enlace todos los documentos, módulos y clases, por este mo
 from Usuarios import *
 from Base_de_datosUsr import *
 
+#El objetivo de esta funcion es que el usuario administrador pueda crear nuevos intgrantes en la organizacion
 def CrearUsuario():
-    import random
+    import random #Se usa random para que genere un id de 3 digitos aleatorios que seran asignados al nuevo usuario
     
     nombre = input("> Ingrese el nombre: ")
     rol = input("> Ingrese el rol que va a desempeñar: ")
     confirmacion_contraseña = False
     
-    while confirmacion_contraseña == False:
+    while confirmacion_contraseña == False: #Aqui se confirma que el usuario este escribiendo corectamente la contraseaña. En caso de no hacerlo, implicará que las contraseñas no coinciden
         contraseña = input("> Ingrese su contraseña: ")
         confirmar_contraseña = input("> Confirme su contraseña: ")
         
@@ -31,7 +32,7 @@ def CrearUsuario():
     usuario = Usuario(nombre, rol, contraseña)
     
     roles = ["ADMINISTRADOR", "SUPERVISOR", "CAJERO", "INVITADO"]
-    
+    #El condicional funciona dependiendo de la primera letra que sea escrita por el usuario. Dependiendo de la respuesta, se crea admin, cajero, invitado o supervisor
     if usuario.rol == roles[0]:
         id_definitivo = "A" + id_nuevo
     elif usuario.rol == roles[1]:
@@ -43,6 +44,7 @@ def CrearUsuario():
     else:
         print("No se cumplen las condiciones para crear un id")
         
+    #El nuevo usuario es vacío y tendrá las tres primeras letras del rol asignado junto a lso tres digitos que le identifican.
     usr = ""
     for letra in usuario.rol:
         if len(usr) != 3:
@@ -54,31 +56,29 @@ def CrearUsuario():
     
     usuario = Usuario(nombre, rol, contraseña, usr, id_definitivo)
     
-    print(f"El usuario creado es el siguiente: ")
+    print(f"El usuario creado es el siguiente: ") #Se confirma en una tupla el usuario recien creado que será almacenado en la base de datos.
     print(usuario)
     
     conf = input("Desea continuar con el Usuario creado? [S/N]\n> ")
     
     if conf.upper() == "S":
-        InsertarUsuario(usuario)
+        InsertarUsuario(usuario) #Si se desea continuar el procedimiento, el usuario será almacenado en la base de datos. De lo contrario volverá al menú inicial de administrador
         print("Usuario agregado con exito")
     elif conf.upper() == "N":
         CrearUsuario()
 
-def EliminarUsr():
+def EliminarUsr(): #Funcion que pide al admin el nombre de usuaio que se desea eliminar. En caso de confirmar los cambios, la base de datos será actualizada.
     usuario_el = input("Ingrese el usuario que desea eliminar?\n > ")
     confirmacion = input(f"Esta seguro que desea eliminar el usuario {usuario_el}? [S/N]\n> ")
-    
-<<<<<<< HEAD
-    if confirmacion == "S":
-        print("si confirma")
+    if confirmacion.upper() == "S":
+        print("Si confirma")
         EliminarUsuario("usuario", usuario_el)
-    elif confirmacion == "N":
+        print("El usuario fue eliminado de la organización.")
+    elif confirmacion.upper() == "N":
         EliminarUsr()
     else:
         print("No se entendio el valor ingresado")
-=======
->>>>>>> 23c12243a9ccd1c4af7c6fcd2864c468051fc420
+
         
     
     
@@ -142,16 +142,16 @@ def administrador ():
     elif eleccion == 3:
             sub_opcion = int(input("Presione 1 si desea unicamente ver el inventario. \n Presione 2 si desea editar el inventario actual."))
             if sub_opcion == 1:
-                print(Base_de_datosUsr.sqlite3()) #Opcion netamente ilustrativa, porque imprimirá un archivo .txt con la informacion que contegna la base de datos.
+                print("Pronto disponible.") #Opcion netamente ilustrativa, porque imprimirá un archivo .txt con la informacion que contegna la base de datos.Base_de_datosUsr.sqlite3()
             elif sub_opcion == 2:
                 print("Agregara un nuevo elemento?")
                 if sub_opcion.upper() == "S":
-                    Base_de_datosUsr #Aqui se llama a la funcion Base de datos para agregar nuevos elementos a la lista
+                    print("Pronto disponible.")#Aqui se llama a la funcion Base de datos para agregar nuevos elementos a la lista
                 else:
-                    print(Base_de_datosUsr.LeerBase)
+                    print("Pronto disponible.")
             elif eleccion == 4: #Como el módulo 4 no se ha implementado todavía, al momento del programa notificar un error, es mejor que se le notifique al usuario que se está trabajando en ello.
                 try:
-                    print(Base_de_datosUsr.FacturaCompra) 
+                    print("Pronto disponible.")
                 except:
                     print("Pronto podra imprimir facturacion de los elementos vendidos")
             elif eleccion == 5: 
@@ -160,38 +160,38 @@ def administrador ():
                     except:
                         print("Oops! Este modulo pronto estara disponible")
             elif eleccion == 6:
-                Usuarios.CambiarContraseña() #En este método, el programa se comunicará con Usuario y el método Cambiar Contraseña
+                print("Pronto disponible.") #En este método, el programa se comunicará con Usuario y el método Cambiar Contraseña
     else:
         return "Contacte a su administrador para que le pueda crear su usuario."        
 
 def cajero(credenciales):
         if credenciales == ["CAJERO", 1234]: #El usuario cajero, tiene unicamente permitido usar metodos de facturacion e inventario
-            print("Bienvenido de vuelta, " + user_identificacion)
+            print("Bienvenido de vuelta, " + "Cajero")
             cajero_eleccion = int(input("Presione 1 para empezar a facturar. \n Presione 2 para mirar el inventario actual."))
             if cajero_eleccion == 1:
-                Base_de_datosUsr.CrearTabla()
+                print("Pronto disponible.")
             elif cajero_eleccion == 2:
-                print(Base_de_datosUsr.LeerBase())
+                print("Pronto disponible.")
             else:
                 return 'Escoja una opcion valida'
 
 def supervisor(credenciales):
     if credenciales == ["SUPERVISOR", 1234]:
-        print("Bienvenido de vuelta, " + user_identificacion)
+        print("Bienvenido de vuelta, ")
         supervisor_eleccion = int(input("El menu de acciones es el siguiente: \n 1: Ver o editar inventario \n 2: Imprimir facturas \n 3: Mostar modo cajero \n 6: Menu cajero"))
         if supervisor_eleccion == 1:
             sub_opcion = int(input("Presione 1 si desea unicamente ver el inventario. \n Presione 2 si desea editar el inventario actual."))
             if sub_opcion == 1:
-                print(Base_de_datosUsr.sqlite3())
+                print("Pronto disponible.")
             elif sub_opcion == 2:
                 print("Agregara un nuevo elemento?")
                 if sub_opcion.upper() == "S":
-                    Base_de_datosUsr #Aqui se llama a la funcion Base de datos para agregar nuevos elementos a la lista
+                    print("Pronto disponible.") #Aqui se llama a la funcion Base de datos para agregar nuevos elementos a la lista
                 else:
-                    print(Base_de_datosUsr.LeerBase)
+                    print("Pronto disponible.")
             elif supervisor_eleccion == 2: 
                 try:
-                    print(Base_de_datosUsr.FacturaCompra) 
+                    print("Pronto disponible.")
                 except:
                     print("Pronto podra imprimir facturacion de los elementos vendidos")
             elif supervisor_eleccion == 3: 
@@ -201,7 +201,7 @@ def supervisor(credenciales):
                     print("Oops! Este modulo pronto estara disponible")
             elif credenciales == ['INVITADO', 1234]:
                 print("Como invitado usted puede unicamente ver el inventario del establecimiento.")
-                return Base_de_datosUsr.LeerBaseOrdenada
+                return print("Pronto disponible.")
     else: 
         return "Contacte a su administrador para que le pueda crear su usuario" 
 
