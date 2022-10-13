@@ -104,7 +104,7 @@ def Validacion():
         print("No se encuentra ningun usuario con ese valor. ")
         Validacion()
     elif len(verificador_base) == 1:
-        print(verificador_base)
+        #print(verificador_base) para ver la contraseña del usuario y confirmar que existe la cuenta
         user_password = input("Digite su contraseña: \n")
         verificador_base = verificador_base[0]
         if verificador_base[5] == user_password:
