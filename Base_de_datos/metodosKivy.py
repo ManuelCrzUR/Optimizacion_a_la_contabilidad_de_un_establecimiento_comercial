@@ -35,7 +35,7 @@ Builder.load_string("""
 <KivyButton>:
     Button:
         text: 'Hola desde mi clase Builder'
-      f  size_hint: .12 , .12 
+        size_hint: .12 , .12 
 
         Image:
             source: 'URosario Logo color.png'
