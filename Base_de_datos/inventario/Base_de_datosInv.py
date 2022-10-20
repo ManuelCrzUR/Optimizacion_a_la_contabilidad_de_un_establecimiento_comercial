@@ -58,6 +58,7 @@ def ActualizarPrecio(producto, precio):
     cant = instr[3]
     instr2 = f"DELETE FROM inventario WHERE producto == '{producto}'"
     cursor.execute(instr2)
+    OrdenarBase()
     conn.commit()
     conn.close()
     prd = Productos(nombr, divis, precio, cant)
@@ -73,8 +74,27 @@ def ActualizarCantidad(producto, cantidad):
     prec = instr[2]
     instr2 = f"DELETE FROM inventario WHERE producto == '{producto}'"
     cursor.execute(instr2)
+    OrdenarBase()
     conn.commit()
     conn.close()
     prd = Productos(nombr, divis, prec, cantidad)
     InsertarProducto(prd)
+
+def Filtrar(argumento, filtro): 
+    conn = sqlite3.connect('Inventario.db')
+    cursor = conn.cursor()
+    instruccion = f"SELECT * FROM producto WHERE {argumento} == '{filtro}'"
+    cursor.execute(instruccion)
+    datos = cursor.fetchall()
+    conn.commit()
+    conn.close()
+    return datos    
+
+def EliminarProducto(nombre):
+    conn = sqlite3.connect('Inventario.db')
+    cursor = conn.cursor()
+    instr = f"DELETE FROM producto WHERE producto == '{nombre}'"
+    cursor.execute(instr)
+    conn.commit()
+    conn.close()
     
