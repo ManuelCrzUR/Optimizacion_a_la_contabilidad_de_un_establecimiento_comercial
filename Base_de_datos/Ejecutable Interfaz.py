@@ -3,8 +3,8 @@ from kivymd.app import MDApp
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
-from Usuarios import *
-from Base_de_datosUsr import *
+from usuarios.Usuarios import *
+from usuarios.Base_de_datosUsr import *
 import sqlite3
 
 #Tama;o de ventana:

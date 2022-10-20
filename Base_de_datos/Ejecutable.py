@@ -6,8 +6,8 @@ Será el archivo que enlace todos los documentos, módulos y clases, por este mo
 
 #Se importan los modulos de las subcarpetas correspondientes
 
-from Usuarios import *
-from Base_de_datosUsr import *
+from usuarios.Usuarios import *
+from usuarios.Base_de_datosUsr import *
 
 #El objetivo de esta funcion es que el usuario administrador pueda crear nuevos intgrantes en la organizacion
 def CrearUsuario():
@@ -78,11 +78,6 @@ def EliminarUsr(): #Funcion que pide al admin el nombre de usuaio que se desea e
         EliminarUsr()
     else:
         print("No se entendio el valor ingresado")
-
-        
-    
-    
-    
             
 #Bienvenida al usuario y preguntamos primero si es alguien registrado, para mayor privacidad del establecimiento.
 def InicioBienvenida():
