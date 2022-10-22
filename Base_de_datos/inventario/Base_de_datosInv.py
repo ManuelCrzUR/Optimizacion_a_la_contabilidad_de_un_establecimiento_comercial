@@ -1,4 +1,4 @@
-from Productos import *
+from Base_de_datos.inventario.ProductosInv import *
 import sqlite3
 
 def CrearBaseInventario():
@@ -9,13 +9,11 @@ def CrearBaseInventario():
 def CrearTablaInventario():
     conn = sqlite3.connect('Inventario.db')
     cursor = conn.cursor()
-    abrir_table = f"""CREATE TABLE IF NOT EXISTS inventario (
+    cursor.execute("""CREATE TABLE IF NOT EXISTS inventario (
         producto TEXT,
         division TEXT,
         precio_unitario INTEGER,
-        cantidad INTEGER,
-        )"""
-    cursor.execute(abrir_table)
+        cantidad INTEGER)""")
     conn.commit()
     conn.close()
 
@@ -42,7 +40,7 @@ def LeerBaseInv():
 def InsertarProducto(producto):
     conn = sqlite3.connect('Inventario.db')
     cursor = conn.cursor()
-    ejecutable = f"INSERT INTO inventario VALUES ('{producto.name}', '{producto.division}', '{producto.precio_unitario}', '{producto.cantidad}')" 
+    ejecutable = f"INSERT INTO inventario VALUES ('{producto.nombre}', '{producto.division}', '{producto.precio_unitario}', '{producto.cantidad}')" 
     cursor.execute(ejecutable)
     OrdenarBase()
     conn.commit()   
@@ -80,10 +78,10 @@ def ActualizarCantidad(producto, cantidad):
     prd = Productos(nombr, divis, prec, cantidad)
     InsertarProducto(prd)
 
-def Filtrar(argumento, filtro): 
+def FiltrarInv(argumento, filtro): 
     conn = sqlite3.connect('Inventario.db')
     cursor = conn.cursor()
-    instruccion = f"SELECT * FROM producto WHERE {argumento} == '{filtro}'"
+    instruccion = f"SELECT * FROM inventario WHERE {argumento} == '{filtro}'"
     cursor.execute(instruccion)
     datos = cursor.fetchall()
     conn.commit()
@@ -93,8 +91,9 @@ def Filtrar(argumento, filtro):
 def EliminarProducto(nombre):
     conn = sqlite3.connect('Inventario.db')
     cursor = conn.cursor()
-    instr = f"DELETE FROM producto WHERE producto == '{nombre}'"
+    instr = f"DELETE FROM inventario WHERE producto == '{nombre}'"
     cursor.execute(instr)
     conn.commit()
     conn.close()
-    
+
+CrearTablaInventario()

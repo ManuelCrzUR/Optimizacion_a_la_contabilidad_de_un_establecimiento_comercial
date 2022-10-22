@@ -1,8 +1,10 @@
 class Productos:
-    def __init__(self, Nombre:str, precio_unidad: int, cantiadad: int = 0) -> object:
+    def __init__(self, Nombre:str, division:str, precio_unidad: int, cantiadad: int = 0) -> object:
         self.nombre = Nombre.upper()
+        self.division = division.upper()
         self.precio_unitario = precio_unidad
         self.cantidad = cantiadad
+        self.iva = False
         
     def __str__(self) -> str:
         mensaje = f"""PRODUCTO: {self.nombre}
