@@ -126,7 +126,7 @@ def VerificacionRol(id):
         supervisor()
         
 def ModificadorInventario():
-    des = input("Aqui puede modificar el inventario.\n1) Añadir producto\n2) Borrar producto")
+    des = input("Aqui puede modificar el inventario.\n1) Añadir producto\n2) Borrar producto\n3) Cambiar Precio")
     
     if des == "1":
         print("Agregar un elemento al inventario")
@@ -136,7 +136,7 @@ def ModificadorInventario():
         
         if len(filtro_nombre) != 0:
             print("Su producto ya se encuentra en el inventario, este se sumara con el presente.")
-            cant = input("Ingrese la cantidad a añadir: ")
+            cant = int(input("Ingrese la cantidad a añadir: "))
             ActualizarCantidad(nom, cant)
             print("Producto añadido y base actualizada") 
         elif len(filtro_nombre) == 0:
@@ -161,9 +161,16 @@ def ModificadorInventario():
         else:
             print("Tu respuesta no ha sido entendida.")
             ModificadorInventario()
-                              
+    elif des == "3":
+        print("Se Cambiara el precio de un producto")
+        nom = input("Ingrese el nombre del producto: ")
+        prec = int(input("Ingrese el nuevo precio: "))
+        nom.upper()
+        ActualizarPrecio(nom, prec)
+        print("Precio actualizado")
+                    
 def administrador ():
-    eleccion = int(input("El menu de acciones es el siguiente: \n 1: Crear Usuario. \n 2: Remover usuario.\n Acciones inventario \n 4: Imprimir facturas \n 5: Mostar modo cajero \n 6: Menu cajero \n"))
+    eleccion = int(input("El menu de acciones es el siguiente: \n 1: Crear Usuario. \n 2: Remover usuario.\n 3: Acciones inventario \n 4: Imprimir facturas \n 5: Mostar modo cajero \n 6: Menu cajero \n"))
             
     if eleccion == 1:
             print("Aqui puede crear nuevos usarios en a la organizacion.")

@@ -1,3 +1,4 @@
+from math import prod
 from Base_de_datos.inventario.ProductosInv import *
 import sqlite3
 
@@ -45,38 +46,46 @@ def InsertarProducto(producto):
     OrdenarBase()
     conn.commit()   
     conn.close()
-    
+
+def EliminarProducto(nombre):
+    conn = sqlite3.connect('Inventario.db')
+    cursor = conn.cursor()
+    instr = f"DELETE FROM inventario WHERE producto == '{nombre}'"
+    cursor.execute(instr)
+    conn.commit()
+    conn.close()
+        
 def ActualizarPrecio(producto, precio):
     conn = sqlite3.connect('Inventario.db')
     cursor = conn.cursor()
-    instr = f"SELECT * FROM inventario WHERE producto == '{producto}'"
-    conn.execute(instr)
+    instr = FiltrarInv("producto", producto)
+    instr = instr[0]
     nombr = instr[0]
     divis = instr[1]
     cant = instr[3]
-    instr2 = f"DELETE FROM inventario WHERE producto == '{producto}'"
-    cursor.execute(instr2)
     OrdenarBase()
     conn.commit()
     conn.close()
     prd = Productos(nombr, divis, precio, cant)
+    EliminarProducto(producto)
     InsertarProducto(prd)
     
-def ActualizarCantidad(producto, cantidad):
-    conn = sqlite3.connect('Inventarios.db')
+def ActualizarCantidad(producto, cant):
+    conn = sqlite3.connect('Inventario.db')
     cursor = conn.cursor()
-    instr = f"SELECT * FROM inventario WHERE prducto == '{producto}'"
-    conn.execute(instr)
-    nombr = instr[0]
-    divis = instr[1]
-    prec = instr[2]
-    instr2 = f"DELETE FROM inventario WHERE producto == '{producto}'"
-    cursor.execute(instr2)
+    filtro = FiltrarInv("producto", producto)
+    prd = filtro[0]
+    nombre = prd[0]
+    division = prd[1]
+    precio = prd[2]
+    cantidad = int(prd[3])
+    cantidad += cant
     OrdenarBase()
     conn.commit()
     conn.close()
-    prd = Productos(nombr, divis, prec, cantidad)
-    InsertarProducto(prd)
+    producto_final = Productos(nombre, division, precio, cantidad)
+    EliminarProducto(producto)
+    InsertarProducto(producto_final)
 
 def FiltrarInv(argumento, filtro): 
     conn = sqlite3.connect('Inventario.db')
@@ -87,13 +96,3 @@ def FiltrarInv(argumento, filtro):
     conn.commit()
     conn.close()
     return datos    
-
-def EliminarProducto(nombre):
-    conn = sqlite3.connect('Inventario.db')
-    cursor = conn.cursor()
-    instr = f"DELETE FROM inventario WHERE producto == '{nombre}'"
-    cursor.execute(instr)
-    conn.commit()
-    conn.close()
-
-CrearTablaInventario()
