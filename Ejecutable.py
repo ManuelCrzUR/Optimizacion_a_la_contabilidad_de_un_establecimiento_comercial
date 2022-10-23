@@ -6,6 +6,7 @@ Será el archivo que enlace todos los documentos, módulos y clases, por este mo
 
 #Se importan los modulos de las subcarpetas correspondientes
 
+from warnings import filters
 from Base_de_datos.inventario.Base_de_datosInv import *
 from Base_de_datos.inventario.ProductosInv import *
 from Base_de_datos.usuarios.Usuarios import *
@@ -124,7 +125,37 @@ def VerificacionRol(id):
         cajero()
     elif inicial_id == "S":
         supervisor()
+
+def Facturar():
+    dict_final = {}
+    print("Para salir, precione (S)")
+    print("Para Finalizar, presione (F)")
+    pr = input("Ingrese el producto a facturar: ")
+    pr.upper()
+    lista_filtro = FiltrarInv("producto", pr)
+    
+    if len(lista_filtro) == 1:
+        cant = int(input(f"Ingrese la cantidad de {pr}"))
+        pr.lower()
+        pr.capitalize()
+        dict_final[f"{pr}"] = cant
+        return dict_final
+    elif len(lista_filtro) == 0:
+        if pr == "S" or "s":
+            cajero()
+        elif pr == "F" or "f":
+            break
+
+def SumarFactura(diccionario):
+    precio_total = 0
+    
+    for precio in diccionario:
+        prd = diccionario[precio]
+        precio_total += prd
+    
+    return precio_total    
         
+
 def ModificadorInventario():
     des = input("Aqui puede modificar el inventario.\n1) Añadir producto\n2) Borrar producto\n3) Cambiar Precio")
     
@@ -198,16 +229,15 @@ def administrador ():
     else:
         return "Contacte a su administrador para que le pueda crear su usuario."        
 
-def cajero(credenciales):
-        if credenciales == ["CAJERO", 1234]: #El usuario cajero, tiene unicamente permitido usar metodos de facturacion e inventario
-            print("Bienvenido de vuelta, " + "Cajero")
-            cajero_eleccion = int(input("Presione 1 para empezar a facturar. \n Presione 2 para mirar el inventario actual."))
-            if cajero_eleccion == 1:
-                print("Pronto disponible.")
-            elif cajero_eleccion == 2:
-                print("Pronto disponible.")
-            else:
-                return 'Escoja una opcion valida'
+def cajero():
+        print("Bienvenido de vuelta")
+        cajero_eleccion = int(input("Presione 1 para empezar a facturar. \n Presione 2 para mirar el inventario actual."))
+        if cajero_eleccion == 1:
+            Facturar()
+        elif cajero_eleccion == 2:
+            print("Pronto disponible.")
+        else:
+            return 'Escoja una opcion valida'
 
 def supervisor(credenciales):
     if credenciales == ["SUPERVISOR", 1234]:
