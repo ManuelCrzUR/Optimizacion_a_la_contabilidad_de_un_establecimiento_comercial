@@ -1,4 +1,3 @@
-from Usuarios import *
 import sqlite3
 
 def CrearBase():
@@ -76,4 +75,3 @@ def EliminarUsuario(argumento, condicion):
     cursor.execute(instr)
     conn.commit()
     conn.close()
-    
