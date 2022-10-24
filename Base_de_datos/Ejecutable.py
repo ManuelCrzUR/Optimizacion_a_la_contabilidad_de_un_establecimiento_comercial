@@ -69,7 +69,6 @@ def EliminarUsr():
     usuario_el = input("Ingrese el usuario que desea eliminar?\n > ")
     confirmacion = input(f"Esta seguro que desea eliminar el usuario {usuario_el}? [S/N]\n> ")
     
-<<<<<<< HEAD
     if confirmacion == "S":
         print("si confirma")
         EliminarUsuario("usuario", usuario_el)
@@ -77,8 +76,6 @@ def EliminarUsr():
         EliminarUsr()
     else:
         print("No se entendio el valor ingresado")
-=======
->>>>>>> 23c12243a9ccd1c4af7c6fcd2864c468051fc420
         
     
     
